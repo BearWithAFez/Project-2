@@ -1,0 +1,33 @@
+Button layout for PI - Arduino Communication
+-----------------------------------------------------------
+
+|Snes Button	-	Keyboard Key 	-	Pin|
+---------------------------------------------------------------------
+	A		-		X		-	A3
+	B 		-		W		-	3
+	X		-		S 		-	4
+	Y		-		Q		-	5
+	L 		-		A		-	9
+	R		-		Z		-	10
+	Up		-		Up 		-	A2
+	Down		-		Down 		-	12
+	Left		-		Left 		-	13
+	Right		-		Right 		-	11
+	Start		-		Enter		-	A0
+	Select	-		R shift	-	A1
+	Menu		-		F1		-	8
+	Q. save	-		F2		-	6
+	Q. Load	-		F4		-	7
+---------------------------------------------------------------------
+| 	X	 	-	Bluetooth Pin 	-	Pin|
+---------------------------------------------------------------------
+			-		5V		-	5V
+			-		GND 		-	GND
+			-		RDY		-	2
+			-		RST		-	A5
+			-		REQ		-	A4
+			-		SCK		-	ICSP3
+			-		MISO	-	ICSP1
+			-		MOSI	-	ICSP4
+			-		ACT		-	Nc
+			-		3Vo		-	Nc

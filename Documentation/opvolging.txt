@@ -1,0 +1,251 @@
+﻿=================================================================================
+
+Project 2 - opvolgingsdocument Academiejaar 2016-2017
+
+=================================================================================
+
+
+Student:	Dwight Van der Velpen
+
+Mentor:		Johan Donné
+
+
+=================================================================================
+Beschrijving - datum 23 september 2016-2017
+=================================================================================
+
+Onderwerp:
+
+Het bouwen van een retro-console emulator met draadloze controllers.
+
+
+Einddoelen:
+1. Het gebruiken van een Raspberry Pi om NES, SNES, SEGA GENESIS, SEGA MASTER SYSTEM en ATARI 2600 te emuleren via bestaande emulatie software.
+2. 2 controllers zelf maken die compatibel zijn met elke console.
+3. Deze zelfgemaakte controllers doen verbinden met de Raspberry Pi via kabel, Bluetooth en Radio Control.
+4. Een paper schrijven die het proces vastlegt. Ook zal deze een onderzoek hebben waarin de voor- en nadelen van de verbindingsmethoden beschreven staan.
+5. Een demonstratie waarin de werking van de:
+    - Emulatie van de individuele ge-emuleerde consoles.
+    - Communicatie van de controllers via RC, Bluetooth en kabel.
+6. Een blog waar er een handleiding voor het reproduceren en gebruiken van het project uitgetypt is.
+
+
+
+Motivatie - betrokkenheid:
+
+Al zolang ik het me herinner ben ik gefascineerd door spelconsoles en dergelijke. Na vorig jaar een oude Snes te repareren kwam ik tot de conclusie dat om
+een retro-console te gebruiken er veel geld en zoekwerk voor nodig is. De beschikbaarheid van deze consoles zijn veel te laag en alhoewel ik er al enkele bezit
+is dit een spijtige zaak dat enkele spellen die grote impact hadden niet beschikbaar zijn. Ook de verscheidene consoles aan één toestel hebben is een chaos.
+Daarom zou ik persoonlijk een emulator willen vervaardigen die mijn oudere spellen die niet meer werken of onvindbaar zijn kan emuleren.
+
+
+Motivatie - grenzen verleggen:
+
+In dit project zal ik een Raspberry Pi leren gebruiken en zo al meer leren over de mogelijkheden van dergelijke.
+Ook zal mijn zwakkere kennis van Radio-comunicatie en andere comunicatie manieren tussen toestellen versterkt worden.
+Ook ben ik zelf niet al te sterk in het documenteren van projecten en ik wens met dit project deze vaardigheid te versterken.
+
+
+Motivatie - professioneel profiel:
+
+kerndoelen: 1.e, 2.b, 5.c, 6.e, 8.k, 10.m
+
+
+Werkvormen:
+Beginnende zal de student eerst een onderzoek doen naar de verschillende matrialen. De Raspberry wordt uitgetest en bekeken waar de limieten liggen hiervan.
+Daarna wordt er gekeken voor een herlaadbare controller te maken die op diverse manieren connecteert met de raspberry. 
+Er wordt gekeken wat de voordelen en de nadelen zijn van elke manier door middel van gerichte testen (snelheid, betrouwbaarheid, etc.).
+Daarna word er een afhankelijke voeding te maken die de console voedt via netspanning.
+Daarna worden er meerdere testen gedaan naar het werken van het project en wordt alles in een paper gedocumenteerd.
+
+<mentor>
+
+  goedgekeurd op 1/10/2016
+
+</mentor>
+
+
+=================================================================================
+Planning - <28-10-2016>
+=================================================================================
+<student>
+    1. Opzoeking Raspbery PI.           -Voltooid
+    2. Bestellen Raspberry PI.          -Voltooid
+    3. Opzoeken OS                      -Voltooid
+    4. OS gebruiken en configureren.    -Voltooid
+    5. Opzoeken Controller schema's.    -Voltooid
+    6. Fabriceren Breadbord Prototype.  -Wip
+        A. Bekabeld   			-Voltooid
+        B. BlueTooth			-Wip
+        C. RC				-mogelijks overgeslagen
+    7. Fabriceren PCB prototypes.	-Besteld
+    8. Verslag.                         - EIND WEEK 11
+	B. Blog				-Start week 8 => Veranderen naar een How to use tutorial met video.
+    9. Demonstratie.
+    10. Uitbreiding naar 3d Behuizing printen.
+    11. Uitbreiding naar WiFi Controller
+</student>
+
+=================================================================================
+Logboek
+=================================================================================
+<student>
+    Raspberry Besteld                           - 7-10-2016
+    Raspberry aangekomen                        - 20-10 -2016
+
+    Problemen met Retropie => overschakeling Lakka      - 23-10-2016
+    Programma werkende met bestaande controllers        - 26-10-2016
+
+    Lange hiatus wegens andere projecten
+
+    Opzoeken van informatie over GPIO pins en LAKKA support
+    Aanmaken van het schema				- 03-12-2016
+    Aanmaken en bestellen van de PCB                    - 04-12-2016
+</student>
+
+
+=================================================================================
+Eerste tussenrapportering - <28 - October - 2016>
+=================================================================================
+
+Stand van zaken:
+<student>
+    Sinds het project gestart is, is er onderzoek gebeurd naar de Raspberry Pi. De vergelijking tussen verschillende soorten werd bekeken en onderzocht. Nadien werd er onderzoek gedaan om het best mogelijke uit de diverse emulatieprogramma's te kiezen. Hierbij werd rekening gehouden met hoe ze werken en hoeveel ze eisen van de computer. Op die manier werd de Raspberry Pi 3B gekozen. Zijn meerdere USB-poorten, betere CPU en reeds aanwezige WiFi-en Bluetoothadapter zijn een voordeel voor de gewenste toepassing. 
+    
+    Het leveren van de Raspberry Pi liet een tijd op zich wachten, maar er werd alreeds onderzoek gedaan naar de verscheidene besturingssystemen. Hiervan waren er 3 die geschikt leken:
+        - RetroPie
+        - Lakka
+        - RecalBox
+    
+    De eerste keuze was RetroPie omdat de communitiy veel groter is en er wordt een "Controller-Setup" uitgevoerd tijdens het opstarten. Dit zou gemakkelijker zijn om eigen controllers voor te ontwerpen.
+    
+    Helaas waren er enkele problemen die niet konden opgelost worden: ROM's laden onbetrouwbaar in, herstarten heeft een bug...
+    
+    Er werd daarom gekozen om over te stappen naar Lakka. Dit een besturingssysteem gebaseerd op de OPENelec en is een Lightweight OS. Het heeft een iets lastigere methode voor het veranderen van de settings, maar de community is (naar eigen ondervinding) iets meer toegankelijk als nieuwkomer.
+    
+    Lakka werd reeds geïnstalleerd en zodanig geconfigureerd dat deze werkt met HOT-SWAP USB. Daardoor wordt de ROM-lijst meteen upgedated bij veranderingen. Ook werd er een audio bug opgelost. Naast Lakka is er een versie van Raspbian geïnstaleerd (een Debian-kloon) om zo de instellingen iets eenvoudiger aan te passen.
+</student>
+
+Reflectie:
+<student>
+    Op dit moment heb ik een gevoel dat de vooruitgang goed is voor de eerste maand, er is namelijk al een werkende emulator gemaakt. 
+    De Pi kan emuleren met werkende controllers (keyboard en XBOX 360 Wireless). Hierdoor is dus eigenlijk het eerste einddoel gehaald.
+    Ik moet echter wel beter documenteren zodat ik meer kan werken aan eindpunt 4 en 6.
+    Het plan is momenteel nog steeds om in de komende maand te werken aan de controllers. Er is hier reeds onderzoek naar gebeurd en er zijn enkele testschema's opgesteld.
+</student>
+
+
+Zelfevaluatie:
+
+<student>
+    Nieuw verworeven kennis:    B
+    Toepassing aangetoond:      C
+    Planning :                  D
+    Analyse noden:              C
+    Initiatief - inzet:         C
+    Rapportering:               B
+</student>
+
+
+Feedback vanwege mentor - <14 november 2016>:
+
+Dwight,
+
+Je hebt al heel wat vorderingen gemaakt en bent duidelijk goed bezig!
+Ik ben dan ook optimistisch over het verder verloop, maar daarbij zijn wel enkele
+aandachtspunten (die je zelf via de scores van je zelfevaluatie ook al aangeeft):
+
+- Je planning: het is bij een planning essentieel dat je bij de verschillende
+opeenvolgende delen ook een tijdsschatting maakt en daar data aan koppelt. Zonder
+die data is het onmogelijk om op tijd te detecteren of je nog op schema zit.
+Daardoor riskeer je dat nodige bijsturingen niet (op tijd) gebeuren.
+
+- Je documentatie/rapportering: Hou er rekening mee dat je op het einde van de rit 
+met je portfolio zal moeten aantonen in welke mate je de doelstellingen gehaald hebt. 
+Je paper en de documentatie zijn daar een belangrijk deel van! 
+
+Als je voldoende aandacht hebt voor die twee punten, wordt dit een geslaagd project!
+
+Johan
+
+
+=================================================================================
+Tweede tussenrapportering - 04-12-2016
+=================================================================================
+
+Stand van zaken:
+
+    Er is een lange pauze geweest wegens er gewerkt werd aan andere projecten. Hierdoor is de vooruitgang van dit project nogal vertraagd.
+    Ondertussen is er wel al af en toe een opzoeking geweest over methoden voor de controller te implementeren. Hierin kwam ik dan tot de 
+    vaststelling dat er geen makelijke manier was om een controller met de GPIO pinnen te verbinden. Deze zouden een hele instelling nodig
+    hebben en mogelijks dan ook nog niet werken. Daarom is er een geopteerd om een arduino te gebruiken die HID mogelijkheden heeft (Micro)
+    Deze zal dan op zijn beurt enkele digitale signalen verwerken afkomstig van drukknoppen. Hierna is er meteen een printplaat ontworpen en 
+    de benodigde componenten besteld. In de loop van week 11 zal deze gesoldeerd en getest worden.
+
+Reflectie:
+
+    Als reflectie moet ik eerlijk toegeven dat ik mijn project nogal heb laten vervagen. Wegens er andere problemen opduikte heb ik niet de benodigde
+    tijd kunnen spenderen aan dit project. Er werd wel af en toe tidbits aan informatie verkregen maar dit is veel te weinig.
+
+
+Zelfevaluatie:
+
+    Nieuw verworeven kennis:    B
+    Toepassing aangetoond:      C
+    Planning :                  B
+    Analyse noden:              B
+    Initiatief - inzet:         C
+    Rapportering:               B
+
+Feedback vanwege mentor - <datum van ingave>:
+
+<Hier komt de feedback en opmerkingen vanwege de mentor>
+
+
+
+=================================================================================
+Eindrapportering - <datum van ingave>
+=================================================================================
+
+
+Eindrapportering:
+
+Als eindpunt heb ik in totaal 2 punten laten vallen. Deze zijn het HF gedeelte en het Bluetooth gedeelte. Anderzijds is de blog vervangen door een instalatie handleiding
+voor het gemak van een  her aanmaak van het project.
+
+Reflectie:
+
+De start van het project ging zeer vlot. Echter heb ik persoonlijk tussen evaluatie 1 en evaluatie 2 serieus de bal laten vallen en niet voldoende doorgewerkt. Hierdoor is er veel tijd verloren gegaan
+Hierdoor is het project moeten stopgezet worden midden in het bluetooth probleem, wat met mischien 2 weken opgelost zou kunnen worden.
+
+
+Inhoud Portfolio:
+
+-Verslag project.
+-Werkende arduino code voor de controller.
+-Handleiding instalatie process
+-Gamecontroller eagle file
+-Button tester Arduino code
+-Link naar Imgc van raspberryPi
+
+
+Bronnenlijst:
+
+Zie bronnenlijst in projectverslag
+
+Zelfevaluatie:
+
+    Nieuw verworeven kennis:        B
+    Toepassing aangetoond:           B
+    Planning :                              C
+    Analyse noden:                       B
+    Initiatief - inzet:                  B
+    Rapportering:                        C
+
+
+
+
+
+
+
+

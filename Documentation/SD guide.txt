@@ -1,0 +1,37 @@
+How to Backup / Erase / Load / Install (Noobs/Lakka) Sd card for RaspBerryPI
+-----------------------------------------------------------------------------------------------------------------
+Needed: 	Win32DiskManager 	> 	sourceforge.net/projects/win32diskimager
+		HDD Raw Copy Tool	>	hddguru.com/software/HDD-Raw-Copy-Tool
+
+Backup:
+----------
+
+	>	Open HDD Raw Copy Tool.
+	>	Select the drive (sd) to copy.
+	>	Select the file to store it into.
+	> 	Press start.
+		> 	Snelheid is 14MB/s voor 8000MB over USB2
+	>	DONE.
+
+Erase:
+--------
+
+	>	Open Console (Win+R)
+	>	Run CMD
+	>	Run Diskpart
+		> 	Wait until you can type.
+	> 	List disk and write down the wanted cleaned disk.
+	>	select disk #
+	>	clean
+	>	create partition primary
+	>	format Fs=# Quick 
+
+Load:
+-------
+	
+	>	Open HDD Raw Copy Tool.
+	>	Select the image to copy. (.IMGC)
+	>	Select the disk to store it into. (SD)
+	> 	Press start.
+		> 	Snelheid is 14MB/s voor 8000MB over USB2
+	>	DONE.	
